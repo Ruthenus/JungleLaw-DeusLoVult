@@ -71,14 +71,13 @@ void Carnivore::Eat(Herbivore* herbivore, unsigned short powerGain)
     }
 
     // Перевірка, чи травоїд живий, -> в AnimalWorld::NutritionCarnivores()
-    /*
+    
     if (!herbivore->IsAlive()) {
         cout << this->species
             << " цурається дохлятини, шукає далі кого з'їсти!!!\n";
         return;
     }
-    */
-
+    
     // Порівняння сили хижака з вагою травоїда
     if (this->power > herbivore->GetWeight()) {
         // Перевірка на переповнення сили (максимум 65535)
@@ -88,7 +87,7 @@ void Carnivore::Eat(Herbivore* herbivore, unsigned short powerGain)
         // Збільшення сили хижака після успішного поїдання
         this->power += powerGain;
         herbivore->SetAlive(false);
-        cout << this->species << " з'їв (з'їла) особину "
+        cout << this->species << " з'їв (з'їла) особину виду "
             << herbivore->GetName() << ", сила збільшилась до "
             << this->power << " Н.\n";
     }
@@ -103,7 +102,7 @@ void Carnivore::Eat(Herbivore* herbivore, unsigned short powerGain)
             // Зменшення сили хижака через невдалу спробу
             this->power -= powerGain;
             cout << this->species << " як не з'їв (з'їла), то надкусив(-ла) "
-                << "особину " << herbivore->GetName()
+                << "особину виду " << herbivore->GetName()
                 << ", сила зменшилась до " << this->power << " Н.\n";
         }
     }
